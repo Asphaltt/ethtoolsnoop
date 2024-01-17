@@ -2,7 +2,7 @@
 
 `ethtoolsnoop` is a tool for tracing the execution of `ethtool`.
 
-## Usage example
+## Use example
 
 ```bash
 # echo Execute `ethtool -i enp0s1; ethtool -l enp0s1; ethtool -g enp0s1` in another terminal.
@@ -16,9 +16,9 @@ enp0s1              11200:ethtool(parent 6373:zsh)         ETHTOOL_MSG_RINGS_GET
 In the output:
 
 - First column is the interface name.
-- Second column is the PID and process name of the process that executed
-  `ethtool`, and the PID and process name of the parent process if the tracee
-  process is `ethtool`.
+- Second column is the PID and process name of the process that called
+  `ethtool`'s `ioctl()` syscall or sent `ethtool`'s genetlink message, and the
+  PID and process name of the parent process if the tracee process is `ethtool`.
 - Third column is the underneath command for kernel to execute, including ways
   of `ioctl()` syscall and genetlink message.
 - Fourth column is the arguments of `ethtool` command, which may be
@@ -28,7 +28,7 @@ In the output:
 
 Please download the latest release from this repo's release page.
 
-`ethtoolsnoop` is expected to run on Linux kernel 5.2 or later with BTF support.
+`ethtoolsnoop` is expected to run on Linux kernel 5.2 and later with BTF support.
 
 ## Intenals
 
